@@ -27,16 +27,14 @@
     [bool]$delete = $false
  )
 
-
-$site = get-spsite $siteUrl
-$web = $site.OpenWeb($webName)
-$list = $web.Lists[$listName]
-
-
 #Add SharePoint PowerShell SnapIn if not already added 
 if ((Get-PSSnapin "Microsoft.SharePoint.PowerShell" -ErrorAction SilentlyContinue) -eq $null) {
     Add-PSSnapin "Microsoft.SharePoint.PowerShell"
 }
+
+$site = get-spsite $siteUrl
+$web = $site.OpenWeb($webName)
+$list = $web.Lists[$listName]
 
 $Logfile = ".\Log.txt"
 
